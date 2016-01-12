@@ -5,10 +5,12 @@ function dir (subpath) {
 }
 
 module.exports = {
-  entry: ['webpack/hot/dev-server', dir('./example.jsx')],
+ entry: dir('./src/index.jsx'),
   output: {
-    path: './',
-    filename: 'bundle.js'
+    path: './dist',
+    filename: 'build.js',
+    library: 'Calendar',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['', '.jsx', '.js']
@@ -36,5 +38,10 @@ module.exports = {
         loader: 'style-loader!css-loader'
       }
     ]
+  },
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'moment': 'moment'
   }
 };

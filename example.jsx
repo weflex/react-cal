@@ -1,20 +1,17 @@
 'use strict';
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Calendar = require('./calendar/index.jsx');
+const Calendar = require('./src/index.jsx');
 const CELL_HEIGHT = 50;
 require('babel-polyfill');
-require('./index.css');
+require('./src/index.css');
 
-let template = {};
-// demo阶段, 假设数据是稀疏的, 暂不考虑同一时段有多节课程的情况
 let classInfo = [{
   date: Date.now(),
   from: "12:30",
   to: "14:00",
   spots: "yoga",
   trainer: 'jkvim',
-  template: template
 }];
 
 let daySchedule = new Map();
@@ -76,13 +73,13 @@ function ClassCard(classInfo) {
   let top = getGridOffset(from);
   let width = getCardWidth(classInfo.length);
   let style = {
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(255, 179, 0, 0.28)',
     height: height,
     marginTop: top
   }
 
   return (
-    <div className='class-card' style={style}>
+    <div className='class-card' style={style} key={from}>
       <p className='class-duration'>{from + '-' + to}</p>
       <p className='class-name'>{classInfo.spots}</p>
     </div>

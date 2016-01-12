@@ -7,6 +7,7 @@ classViews : {
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+import './index.css'
 
 let DAYHOUR = 24;
 let WEEKDAY = 7;
@@ -164,7 +165,7 @@ class ScheduleTable extends React.Component {
 
   render() {
     let tableBody = this.getTableBody(),
-        style = {height: 400}; // TODO set as tbale clientHeight 
+        style = {height: window.innerHeight - 100}; 
 
     return (
       <div className='schedule-table' style={style}>
@@ -241,7 +242,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    console.log(this.state.cardTemplate);
     return (
       <div className='calendar'>
         <WeekHeader 
