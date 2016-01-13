@@ -6,13 +6,15 @@ const CELL_HEIGHT = 50;
 require('babel-polyfill');
 require('./src/index.css');
 
-let classInfo = [{
-  date: Date.now(),
-  from: "12:30",
-  to: "14:00",
-  spots: "yoga",
-  trainer: 'jkvim',
-}];
+let classInfo = [
+  {
+    date: Date.now(),
+    from: "12:30",
+    to: "14:00",
+    spots: "yoga",
+    trainer: 'jkvim',
+  },
+];
 
 let daySchedule = new Map();
 let weekSchedule = new Map();
@@ -62,6 +64,7 @@ function getGridOffset(from) {
   return offsetTop;
 }
 
+// 目前没有用上, 可以在同一时段有多个事件
 function getCardWidth(length) {
   return (1 / length * 100) + '%';
 }
@@ -78,8 +81,12 @@ function ClassCard(classInfo) {
     marginTop: top
   }
 
+  function handleClick() {
+    alert('click');
+  }
+
   return (
-    <div className='class-card' style={style} key={from}>
+    <div className='class-card' style={style} key={from} onClick={handleClick}>
       <p className='class-duration'>{from + '-' + to}</p>
       <p className='class-name'>{classInfo.spots}</p>
     </div>
